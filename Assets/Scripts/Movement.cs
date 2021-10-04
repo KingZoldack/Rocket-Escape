@@ -6,6 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody _rb;
+    AudioSource _audioSource;
 
     [SerializeField]
     float thrustSpeed, rotateSpeed;
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -33,6 +35,12 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             _rb.AddRelativeForce(Vector3.up * thrustSpeed * Time.deltaTime);
+            _audioSource.Play();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            _audioSource.Stop();
         }
     }
 
