@@ -13,20 +13,26 @@ public class CollisionHandler : MonoBehaviour
     AudioClip _crashSound, _winSound;
 
     [SerializeField]
+    ParticleSystem _winParticles, _crashParticles;
+
+    [SerializeField]
     [Range(0, 1)]
     float _crashSoundVolume, _winSoundVolume;
 
     //Reference Caches
     Movement movementScript;
     AudioSource _audioSource;
+    Collider[] _colliders;
 
     //States
-    bool isTransitioning;
+    bool isTransitioning, collidersOff = true;
+
 
     private void Awake()
     {
         movementScript = GetComponent<Movement>();
         _audioSource = GetComponent<AudioSource>();
+        _colliders = GetComponentsInChildren<Collider>();
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -47,6 +53,39 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        DebugKeys();
+    }
+
+    private void DebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && collidersOff)
+        {
+            foreach (var collider in _colliders)
+            {
+                collider.enabled = false;
+            }
+
+            collidersOff = false;
+        }
+
+        else if (Input.GetKeyDown(KeyCode.C) && !collidersOff)
+        {
+            foreach (var collider in _colliders)
+            {
+                collider.enabled = true;
+            }
+
+            collidersOff = true;
+        }
+    }
+
     void ReloadLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -58,7 +97,7 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true;
         _audioSource.Stop();
         _audioSource.PlayOneShot(_crashSound, _crashSoundVolume);
-        //Add particle effect
+        _crashParticles.Play();
         movementScript.enabled = false;
         Invoke("ReloadLevel", _levelLoadDelay);
     }
@@ -81,7 +120,7 @@ public class CollisionHandler : MonoBehaviour
         isTransitioning = true;
         _audioSource.Stop();
         _audioSource.PlayOneShot(_winSound, _winSoundVolume);
-        //Add particle effect
+        _winParticles.Play();
         movementScript.enabled = false;
         Invoke("LoadNextLevel", _levelLoadDelay);
     }
