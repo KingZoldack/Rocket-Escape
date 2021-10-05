@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 1462545172}
   - component: {fileID: 1462545171}
   - component: {fileID: 1462545174}
+  - component: {fileID: 141983186}
+  - component: {fileID: 1699326020678398502}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -161,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801d0a0c541da8c46adf13fe730b0491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainThruster: {fileID: 8300000, guid: 47ce04e2f7cb101429fe7c110e315e35, type: 3}
+  _mainThrusterVolume: 0.5
   thrustSpeed: 1000
   rotateSpeed: 100
 --- !u!82 &1462545174
@@ -173,9 +177,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 47ce04e2f7cb101429fe7c110e315e35, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.437
+  m_Volume: 0.109
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -259,6 +263,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &141983186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408111845371435681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4a09204e3bc4942afdf67facfee5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelLoadDelay: 1.5
+  _crashSound: {fileID: 8300000, guid: 8b3159f8ab306024ca912f169bc8bb53, type: 3}
+  _winSound: {fileID: 8300000, guid: 4f8332a2e60f02a4d8accf638af137c4, type: 3}
+  _crashSoundVolume: 0.5
+  _winSoundVolume: 0.5
+--- !u!114 &1699326020678398502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408111845371435681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4a09204e3bc4942afdf67facfee5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelLoadDelay: 1.5
+  _crashSound: {fileID: 8300000, guid: 8b3159f8ab306024ca912f169bc8bb53, type: 3}
+  _winSound: {fileID: 8300000, guid: 4f8332a2e60f02a4d8accf638af137c4, type: 3}
+  _crashSoundVolume: 0.25
+  _winSoundVolume: 0.5
 --- !u!1 &4213494303155929364
 GameObject:
   m_ObjectHideFlags: 0

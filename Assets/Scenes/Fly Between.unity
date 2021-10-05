@@ -123,23 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &141983181 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1408111845371435681, guid: d8eac2ce5a7134f449ed543ea5b583b6, type: 3}
-  m_PrefabInstance: {fileID: 8802185403160245309}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &141983186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141983181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b4a09204e3bc4942afdf67facfee5a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801d0a0c541da8c46adf13fe730b0491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainThruster: {fileID: 0}
+  _mainThrusterVolume: 0
   thrustSpeed: 1000
   rotateSpeed: 0
 --- !u!54 &2075403026
@@ -743,18 +728,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1462545171, guid: d8eac2ce5a7134f449ed543ea5b583b6, type: 3}
-      propertyPath: thrusterSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 47ce04e2f7cb101429fe7c110e315e35, type: 3}
-    - target: {fileID: 1462545174, guid: d8eac2ce5a7134f449ed543ea5b583b6, type: 3}
-      propertyPath: m_Volume
-      value: 0.109
-      objectReference: {fileID: 0}
-    - target: {fileID: 1462545174, guid: d8eac2ce5a7134f449ed543ea5b583b6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 977463803693364000, guid: d8eac2ce5a7134f449ed543ea5b583b6, type: 3}
       propertyPath: m_RootOrder
       value: 5

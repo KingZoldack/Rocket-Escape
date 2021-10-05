@@ -5,11 +5,21 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody _rb;
-    AudioSource _audioSource;
+    //Config Params
+    [SerializeField]
+    AudioClip _mainThruster;
+
+    [SerializeField] [Range(0, 1)]
+    float _mainThrusterVolume;
 
     [SerializeField]
     float thrustSpeed, rotateSpeed;
+
+    //Reference Caches
+    Rigidbody _rb;
+    AudioSource _audioSource;
+
+    
 
     private void Awake()
     {
@@ -38,7 +48,7 @@ public class Movement : MonoBehaviour
             
             if (!_audioSource.isPlaying)
             {
-                _audioSource.Play();
+                _audioSource.PlayOneShot(_mainThruster, _mainThrusterVolume);
             }
         }
 
@@ -50,12 +60,12 @@ public class Movement : MonoBehaviour
 
     private void ProcessRotation()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             ApplyRotation(rotateSpeed);
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             ApplyRotation(-rotateSpeed);
         }
